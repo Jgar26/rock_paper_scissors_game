@@ -1,1 +1,1 @@
-This an excercise Odin has us do where we creat a # rock_paper_scissors_game
+This an excercise Odin has us do where we create a # rock_paper_scissors_game
