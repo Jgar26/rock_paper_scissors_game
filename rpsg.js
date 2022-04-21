@@ -5,7 +5,14 @@
 -make playerSelection parameter case-insensitive 
 -return not console */
 
-function computerplay() {
+
+const myArray = ['Rock', 'Paper', 'Scissors'];
+function computerPlay() {
+
+return myArray[~~(Math.random() * myArray.lenth)];
+}
+
+function playRound(playerSelection, computerSelection){
 
     
 }
