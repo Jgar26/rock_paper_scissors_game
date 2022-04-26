@@ -5,51 +5,52 @@
 -make playerSelection parameter case-insensitive 
 -return not console */
 
-function playRound(playerSelection, computerSelection){
-  
-   let playRound = prompt("Rock, paper, or scissors?");
-    if (playerSelection) {
-        let playerOne = playerSelection.trim() .toLowerCase();
-         if (playerOne === "rock" || playerOne === "paper" || playerOne === "scissors"){
+ const playerSelectionDisplay = document.getElementById('user-choice')
+ const _computerSelectionDisplay = document.getElementById('computer-choice')
+ const resultDisplay = document.getElementById('result')
+ const possibleChoices = document.querySelectorAll('button')
 
-             let computerSelection = Math.floor(Math.random()* 3 + 1);
-             let computer = computerSelection === 1 ? "rock"
-                : computerSelection === 2 ? "paper"
-                :"scissors";
 
-             let result = 
-             playerSelection === computer 
-                ? "Tie Game!"
-                : playerSelection === "rock" && computer === "paper"
-                ? `playerSelection: ${playerSelection}\nComputer: ${computer}\nComputer wins!`
-                : playerSelection === "paper" && computer === "scissors"
-                ? `playerSelection: ${playerSelection}\nComputer: ${computer}\nComputer wins!`
-                : playerSelection === "scissors" && computer === "rock"
-                ? `playerSelection: ${playerSelection}\nComputer: ${computer}\nComputer wins!`
-                : `playerSelection: ${playerSelection}\nComputer: ${computer}\nplayerSelection Wins!`;
-             alert(result);
-             let playAgain = cofirm("Play again?");
-             playAgain ? location.reload(): alert("Ok, thanks for playing.");
-            }
-        
+   possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+    playerSelection = e.target.id
+      playerSelectionDisplay.innerHtml = playerSelection
+      generateComputerSelection()
+      getResult()
+   } ))
+   function generateComputerSelection ()
+   {
+      const randomNumber = Math.floor(Math.random()* 3 + 1); //or you can use possibleChoices.lengt
+    if (randomNumber === 1) {
+       _computerSelection = 'rock'
     }
+    if (randomNumber === 2) {
+      _computerSelection = 'paper'
+   }
+    if (randomNumber === 3) {
+      _computerSelection = 'scissors'
+   } 
+ computerChoiceDisplay.innerHtml = _computerSelection
+} 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function getResult(){
+   if (_computerSelection === playerSelection){
+      result = 'Its a draw!'
+   }
+   if (_computerSelection === 'rock' &&  playerSelection === "paper") {
+      result = 'you win!'
+   }
+   if (_computerSelection === 'rock' &&  playerSelection === "scissors") {
+      result = 'you lost!'
+   }
+   if (_computerSelection === 'paper' &&  playerSelection === "scissors") {
+      result = 'you win!'
+   }
+   if (_computerSelection === 'scissors' &&  playerSelection === "rock") {
+      result = 'you win!'
+   }
+   if (_computerSelection === 'scissors' &&  playerSelection === "paper") {
+      result = 'you lost!'
+   }
+   resultDisplay.innerHtml = result
 }
-
